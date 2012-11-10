@@ -38,6 +38,10 @@ Crafty.c("Game", {
                 flipped[1]._flip();
             }
         }
+        var empty = board._getCellsByType(CELL_TYPE_EMPTY);
+        if (empty.length == board._getNumOfCells()) {
+            board._setFinalImage();
+        }
         blockInput = false;
     }
 });

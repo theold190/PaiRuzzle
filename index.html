@@ -15,8 +15,8 @@
     parseQueryString(qsParm);
     Crafty.init(100, 100);
 
-    DEBUG=1;//qsParm['debug'] != 0;
-    SKIN="ComHazzle";
+    DEBUG=qsParm['debug'] != 0;
+    SKIN=qsParm['skin'] != undefined ? qsParm['skin'] : "Social";
     var game = Crafty.e("Game");
   });
 </script>

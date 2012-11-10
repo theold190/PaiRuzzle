@@ -22,8 +22,11 @@ Crafty.c("Board", {
             }
             cy += cellHeight;
         }
-        this.image("img/"+skin+"/background.png");
+        this.image("img/"+this._skin+"/background.png");
         return this;
+    },
+    _setFinalImage: function() {
+        this.image("img/"+this._skin+"/background_final.png");
     },
     _randomize: function() {
         var numElements = this._rows * this._cols;
@@ -68,5 +71,8 @@ Crafty.c("Board", {
             }
         }
         return list;
+    },
+    _getNumOfCells: function() {
+        return this._rows * this._cols;
     }
 });
