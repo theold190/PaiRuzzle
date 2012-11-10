@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<head>
+	<script type="text/javascript" src="js/crafty.js"></script>
+	<script type="text/javascript" src="js/utils.js"></script>
+	<script type="text/javascript" src="js/board.js"></script>
+	<script type="text/javascript" src="js/cell.js"></script>
+	<script type="text/javascript" src="js/game.js"></script>
+</head>
+
+<script type="text/javascript">
+  window.onload = (function() {
+    var qsParm = new Array();
+    qsParm['debug'] = 0;
+    parseQueryString(qsParm);
+    Crafty.init(100, 100);
+
+    DEBUG=1;//qsParm['debug'] != 0;
+    var game = Crafty.e("Game");
+  });
+</script>
+
+<body>
+  <table>
+    <tr>
+    </tr>
+    <tr>
+      <td><div id="cr-stage"></div></td>
+    </tr>
+  </table>
+</body>
+</html>
