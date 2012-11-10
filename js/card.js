@@ -26,21 +26,17 @@ Crafty.c("Card", {
                 this.alpha=0.0;
                 break;
             case CELL_TYPE_COVER:
-                if(this.has(this._frontSprite)) {
-                    this.removeComponent(this._frontSprite, false);
+                if(!this.has("Image")) {
+                    this.addComponent("Image");
                 }
-                if(!this.has(this._coverSprite)) {
-                    this.addComponent(this._coverSprite);
-                }
+                this.image(this._coverSprite);
                 this.alpha=1.0;
                 break;
             case CELL_TYPE_FRONT:
-                if(this.has(this._coverSprite)) {
-                    this.removeComponent(this._coverSprite, false);
+                if(!this.has("Image")) {
+                    this.addComponent("Image");
                 }
-                if(!this.has(this._frontSprite)) {
-                    this.addComponent(this._frontSprite);
-                }
+                this.image(this._frontSprite);
                 this.alpha=1.0;
                 break;
         }
@@ -73,8 +69,8 @@ Crafty.c("Card", {
     },
     _setIndex: function(index) {
         this._index = index;
-        this._frontSprite = this._skin+"_sprite_front"+index;
-        this._coverSprite = this._skin+"_sprite_cover";
+        this._frontSprite = "img/"+this._skin+"/front"+index+".png";
+        this._coverSprite = "img/"+this._skin+"/cover.png";
         this._update(CELL_TYPE_COVER);
     },
     _isSameIndex: function(cell) {

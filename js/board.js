@@ -1,6 +1,6 @@
 Crafty.c("Board", {
     init: function() {
-        this.addComponent("2D, DOM");
+        this.addComponent("2D, DOM, Image");
         this._rows = 4;
         this._cols = 4;
     },
@@ -22,11 +22,7 @@ Crafty.c("Board", {
             }
             cy += cellHeight;
         }
-        var bg = skin+"_sprite_background";
-        if(!this.has(bg)) {
-            this.addComponent(bg);
-        }
-
+        this.image("img/"+skin+"/background.png");
         return this;
     },
     _randomize: function() {
