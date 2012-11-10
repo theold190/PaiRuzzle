@@ -5,6 +5,7 @@
 	<script type="text/javascript" src="js/board.js"></script>
 	<script type="text/javascript" src="js/card.js"></script>
 	<script type="text/javascript" src="js/game.js"></script>
+	<script type="text/javascript" src="js/status.js"></script>
 	<script type="text/javascript" src="js/sprites.js"></script>
 </head>
 
@@ -13,7 +14,7 @@
     var qsParm = new Array();
     qsParm['debug'] = 0;
     parseQueryString(qsParm);
-    Crafty.init(100, 100);
+    Crafty.init(200, 200);
 
     DEBUG=qsParm['debug'] != 0;
     SKIN=qsParm['skin'] != undefined ? qsParm['skin'] : "Social";

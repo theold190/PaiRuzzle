@@ -1,5 +1,6 @@
 var DEBUG=0;
 var SKIN="ComHazzle";
+var DEFAULT_GAME_TIME=180;
 var blockInput = false;
 
 Crafty.c("Game", {
@@ -10,8 +11,13 @@ Crafty.c("Game", {
         this.attr({x:this._x, y:this._y, w:this._board._w, h:this._board._h});
         blockInput = false;
 
+        this._status = Crafty.e("Status")._make(120, 0);
+
+        this._countdown = DEFAULT_GAME_TIME;
+        setTimeout(this._doCountdown, 1000);
+
         this.bind('Click', function(e) {
-            if (this._blockInput) {
+            if (blockInput) {
                 return;
             }
             var cell = this._board._getCellByCoords(e.realX, e.realY);
@@ -26,7 +32,21 @@ Crafty.c("Game", {
             }
         });
     },
+    _doCountdown: function() {
+        var game = Crafty("Game");
+        game._countdown--;
+        game._status._setTime(game._countdown < 0 ? 0 : game._countdown);
+        if (game._countdown < 0) {
+            game._gameOver();
+        } else {
+            setTimeout(game._doCountdown, 1000);
+        }
+    },
+    _gameOver: function() {
+        //alert("Game is over...");
+    },
     _checkFlipped: function() {
+        var game = Crafty("Game");
         var board = Crafty("Board");
         var flipped = board._getCellsByType(CELL_TYPE_FRONT);
         if (flipped.length == 2) {
@@ -36,6 +56,8 @@ Crafty.c("Game", {
             } else {
                 flipped[0]._flip();
                 flipped[1]._flip();
+                game._countdown-=5;
+                game._status._timePunishment();
             }
         }
         var empty = board._getCellsByType(CELL_TYPE_EMPTY);
