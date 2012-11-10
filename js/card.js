@@ -7,8 +7,9 @@ Crafty.c("Card", {
         this.addComponent("2D, DOM, Color");
         this._index = 0;
     },
-    _make: function(x, y, width, height) {
+    _make: function(x, y, width, height, skin) {
         this.attr({x: x, y: y, w:width, h:height});
+        this._skin = skin;
         this._update(CELL_TYPE_EMPTY);
         return this;
     },
@@ -72,8 +73,8 @@ Crafty.c("Card", {
     },
     _setIndex: function(index) {
         this._index = index;
-        this._frontSprite = "sprite_front"+index;
-        this._coverSprite = "sprite_cover";
+        this._frontSprite = this._skin+"_sprite_front"+index;
+        this._coverSprite = this._skin+"_sprite_cover";
         this._update(CELL_TYPE_COVER);
     },
     _isSameIndex: function(cell) {

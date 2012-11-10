@@ -1,10 +1,11 @@
 var DEBUG=0;
+var SKIN="ComHazzle";
 var blockInput = false;
 
 Crafty.c("Game", {
     init: function() {
         this.addComponent("KeyboardEvent, 2D, Mouse");
-        this._board = Crafty.e("Board")._make(100, 100);
+        this._board = Crafty.e("Board")._make(100, 100, SKIN);
         this._board._randomize();
         this.attr({x:this._x, y:this._y, w:this._board._w, h:this._board._h});
         blockInput = false;
