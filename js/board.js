@@ -1,6 +1,6 @@
 Crafty.c("Board", {
     init: function() {
-        this.addComponent("2D, DOM");
+        this.addComponent("2D, DOM, sprite_background");
         this._rows = 4;
         this._cols = 4;
     },
@@ -16,7 +16,7 @@ Crafty.c("Board", {
             this._board[i] = [];
             var cx = 0;
             for (var j=0; j<this._cols; j++) {
-                this._board[i][j] = Crafty.e("Cell")._make(cx, cy, cellWidth, cellHeight);
+                this._board[i][j] = Crafty.e("Card")._make(cx, cy, cellWidth, cellHeight);
                 cx += cellWidth;
             }
             cy += cellHeight;
@@ -36,8 +36,7 @@ Crafty.c("Board", {
                     for (var j=0; j<this._cols && !found; ++j) {
                         if(this._board[i][j]._isEmpty()) {
                             if (index <= 0) {
-                                this._board[i][j]._index = n%num;
-                                this._board[i][j]._update(CELL_TYPE_COVER);
+                                this._board[i][j]._setIndex(n%num);
                                 found = true;
                                 break;
                             }
