@@ -2,7 +2,7 @@ Crafty.c("Board", {
     init: function() {
         this.addComponent("2D, DOM");
         this._rows = 4;
-        this._cols = 4
+        this._cols = 4;
     },
     _make: function(width, height) {
         this.attr({w:width, h:height});
@@ -24,8 +24,30 @@ Crafty.c("Board", {
 
         return this;
     },
-    _getBoardSize: function() {
-        return this._board.length;
+    _randomize: function() {
+        var numElements = this._rows * this._cols;
+        var num = parseInt(numElements/2);
+
+        for (var n=0; n<2*num; ++n) {
+            var index = Crafty.math.randomInt(0,numElements-1);
+            var found = false;
+            while(!found) {
+                for (var i=0; i<this._rows && !found; ++i) {
+                    for (var j=0; j<this._cols && !found; ++j) {
+                        if(this._board[i][j]._isEmpty()) {
+                            if (index <= 0) {
+                                this._board[i][j]._index = n%num;
+                                this._board[i][j]._update(CELL_TYPE_COVER);
+                                found = true;
+                                break;
+                            }
+                            index--;
+                        }
+                    }
+                }
+            }
+            numElements--;
+        }
     },
     _getCellByCoords: function(x, y) {
         for (var i=0; i<this._rows; i++) {

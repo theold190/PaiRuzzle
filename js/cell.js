@@ -9,7 +9,7 @@ Crafty.c("Cell", {
     },
     _make: function(x, y, width, height) {
         this.attr({x: x, y: y, w:width, h:height});
-        this._update(CELL_TYPE_COVER);
+        this._update(CELL_TYPE_EMPTY);
         return this;
     },
     _isInsideCell: function(x, y) {
