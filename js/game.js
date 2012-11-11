@@ -1,15 +1,15 @@
 var DEBUG=0;
 var SKIN="ComHazzle";
 var DEFAULT_GAME_TIME=60;
-var NUMBER_OF_ROUNDS = 3;
+var NUMBER_OF_ROUNDS = 1;
 var blockInput = false;
 
 Crafty.c("Game", {
     init: function() {
         this.addComponent("KeyboardEvent, 2D, DOM, Mouse");
-        this.attr({x:0, y:0, w:100, h:100});
+        this.attr({x:0, y:0, w:BOARD_WIDTH, h:BOARD_HEIGHT});
 
-        this._status = Crafty.e("Status")._make(120, 0);
+        this._status = Crafty.e("Status")._make(BOARD_WIDTH+20, 0);
         this.bind('KeyDown', function(e) {
             if(e.key == Crafty.keys['SPACE']
                 || e.key == Crafty.keys['ENTER']) {
@@ -53,7 +53,7 @@ Crafty.c("Game", {
                 return;
             }
             var cell = this._board._getCellByCoords(e.realX, e.realY);
-            if (cell._isEmpty()) {
+            if (cell == undefined || cell._isEmpty()) {
                 return;
             }
             cell._flip();

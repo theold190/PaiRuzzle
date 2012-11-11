@@ -50,7 +50,7 @@ Crafty.c("Card", {
                 if(!this.has("Text")) {
                     this.addComponent("Text");
                     this.css({textAlign: 'center'});
-                    this.textFont({size: '10px', family: 'Arial'});
+                    this.textFont({size: '50px', family: 'Arial'});
                     this.text(this._index+1);
                 }
             }

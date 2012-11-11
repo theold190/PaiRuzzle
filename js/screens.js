@@ -1,5 +1,5 @@
 Crafty.c("ScreenText", {
-    _textSize: 10,
+    _textSize: 30,
     _textColor: '#FFFFFF',
     init: function() {
         this.addComponent("2D, DOM, Text");
@@ -13,7 +13,7 @@ Crafty.c("ScreenText", {
 Crafty.c("Screen", {
     init: function() {
         this.addComponent("2D, DOM, Color");
-        this.attr({w:100, h:100});
+        this.attr({w:BOARD_WIDTH, h:BOARD_HEIGHT});
         this.color('#000000');
     },
 });

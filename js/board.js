@@ -1,3 +1,6 @@
+var BOARD_WIDTH=400;
+var BOARD_HEIGHT=400;
+
 Crafty.c("Board", {
     init: function() {
         this.addComponent("2D, DOM, Image");
