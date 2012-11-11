@@ -49,7 +49,7 @@ Crafty.c("TaskScreen", {
 
         var limit = "You have " + this._time + " seconds";
         this._textLimit = Crafty.e("ScreenText");
-        this._textLimit.text(limit).attr({y:this._h-3*this._textLimit._textSize, w:this._w});
+        this._textLimit.text(limit).attr({y:this._h-2*this._textLimit._textSize, w:this._w});
     }
 });
 

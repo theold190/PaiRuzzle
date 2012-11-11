@@ -17,7 +17,11 @@
     Crafty.init(BOARD_WIDTH+200, BOARD_HEIGHT);
 
     DEBUG=qsParm['debug'] != 0;
-    SKIN=qsParm['skin'] != undefined ? qsParm['skin'] : "Social";
+    if (qsParm['skin'] != undefined) {
+    LIST_OF_SKINS = [qsParm['skin']];
+    } else {
+        LIST_OF_SKINS = ["ComHazzle", "Social"];
+    }
     var game = Crafty.e("Game")._start();
   });
 </script>

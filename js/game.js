@@ -1,5 +1,5 @@
 var DEBUG=0;
-var SKIN="ComHazzle";
+var LIST_OF_SKINS=[];
 var DEFAULT_GAME_TIME=60;
 var NUMBER_OF_ROUNDS = 1;
 var blockInput = false;
@@ -83,6 +83,11 @@ Crafty.c("Game", {
     _start: function() {
         this._roundNumber = 0;
         this._countdown = 0;
+        var skin_index = Crafty.math.randomInt(0, LIST_OF_SKINS.length-1);
+        this._skin = LIST_OF_SKINS[skin_index];
+        if (this._skin == undefined) {
+            this._skin = "ComHazzle";
+        }
         Crafty.e("WelcomeScreen");
     },
     _preStartRound: function() {
@@ -94,7 +99,8 @@ Crafty.c("Game", {
     },
     _startRound: function() {
         this._clearAll();
-        this._board = Crafty.e("Board")._make(this._w, this._h, SKIN);
+
+        this._board = Crafty.e("Board")._make(this._w, this._h, this._skin);
         this._board._randomize();
 
         this._status._setTime(this._countdown < 0 ? 0 : this._countdown);
