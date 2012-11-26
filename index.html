@@ -20,9 +20,24 @@
     if (qsParm['skin'] != undefined) {
     LIST_OF_SKINS = [qsParm['skin']];
     } else {
-        LIST_OF_SKINS = ["ComHazzle", "Social"];
+        LIST_OF_SKINS = ["ComHazzle", "Social", "PuTris"];
     }
-    var game = Crafty.e("Game")._start();
+
+    // Dirty hack to preload all images
+    var skinImages = [];
+    for (var i=0; i<LIST_OF_SKINS.length; i++) {
+        for (var j=0; j<8; j++) {
+            skinImages.push("img/"+LIST_OF_SKINS[i]+"/front"+j+".png");
+        }
+        skinImages.push("img/"+LIST_OF_SKINS[i]+"/cover.png");
+        skinImages.push("img/"+LIST_OF_SKINS[i]+"/background_final.png");
+        skinImages.push("img/"+LIST_OF_SKINS[i]+"/background.png");
+    }
+    Crafty.load(skinImages,
+        function() {
+            var game = Crafty.e("Game")._start();
+        }
+    );
   });
 </script>
 
